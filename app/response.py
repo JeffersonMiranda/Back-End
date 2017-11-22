@@ -5,12 +5,11 @@ class LoginResponse:
 	__token_push = ''
 	__user = None
 
-	def toJSON(self):
-		return json.dumps(self.__dict__, cls=ComplexEncoder)
-
 	def __init__(self, token, user):
 		self.__token_push = token
 		self.__user = user
+	def toJSON(self):
+		return json.dumps(self.__dict__, cls=ComplexEncoder)
 
 class User:
 	__id = 0
