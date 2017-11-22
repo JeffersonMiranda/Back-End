@@ -18,5 +18,6 @@ from app import views as myapp_views
 
 urlpatterns = [
     url(r'^login/$', myapp_views.login, name='login'),
+	url(r'^sign/$', myapp_views.sign, name='sign'),
 ]
 
