@@ -3,8 +3,8 @@ from django.views.decorators.csrf import csrf_exempt
 #from django.contrib.auth.models import User
 from app.models import Users
 from django.http import JsonResponse
-from app.response import LoginResponse, User
-import simplejson as json
+from app.response import LoginResponse, User, ComplexEncoder
+import json
 
 @csrf_exempt
 def login(request):
@@ -19,6 +19,6 @@ def login(request):
 				if users[i].token_push == token_push:
 					user = User(users[i].idUser, users[i].nameUser, users[i].mailUser)
 					loginResponse = LoginResponse(token_push, user)
-					return loginResponse.toJson()
+					return JsonResponse(loginResponse.getDict())
 		++i
 	return HttpResponse('No sucess')
