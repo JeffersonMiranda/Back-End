@@ -97,7 +97,7 @@ class City:
 	def getDefault(self):
 		return self.__default
 
-	def getCurrent(self)
+	def getCurrent(self):
 		return self.__current
 
 class Photos:
