@@ -1,9 +1,9 @@
 from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 #from django.contrib.auth.models import User
-from app.models import Users
+from app.models import Users, UserProfile, Pictures, City
 from django.http import JsonResponse
-from app.response import LoginResponse, User, ComplexEncoder
+from app.response import LoginResponse, User, Sex, City, Photos
 import json
 
 @csrf_exempt
@@ -17,7 +17,10 @@ def login(request):
 		if users[i].mailUser == email:
 			if users[i].passwordUser == password:
 				if users[i].token_push == token_push:
-					user = User(users[i].idUser, users[i].nameUser, users[i].mailUser)
+					userProfile = UserProfile.objects.filter(idUser=users[i].UserProfile_userId)
+					pictures = Pictures.objects.filter(idUserProfile=users[i].Pictures_idUserProfile)
+					city = City.objects.filter(idUser=users[i].City_idUser)
+					user = User(users[i].idUser, userProfile.nameUserProfile, users[i].mailUser, userProfile.ageUserProfile, userProfile.genderUserProfile, City(city.default,city.current), users[i].createdAt, users[i].updatedAt, Photos(pictures.picture01,pictures.picture02,pictures.picture03))
 					loginResponse = LoginResponse(token_push, user)
 					return JsonResponse(loginResponse.getDict())
 		++i
