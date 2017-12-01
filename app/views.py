@@ -34,7 +34,7 @@ def sign(request):
 	password = request.POST.get('password')
 	token_push = request.POST.get('token_push')
 	i = 0
-	userObj = Users(mailUser=email,nameUser=name,passwordUser=password,token_push=token_push)
+	userObj = Users(mailUser=email,passwordUser=password,createAttoken_push=token_push)
 	userObj.save()
 	user = User(userObj.idUser, userObj.nameUser, userObj.mailUser)
 	loginResponse = LoginResponse(token_push, user)
