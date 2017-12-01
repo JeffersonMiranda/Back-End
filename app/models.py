@@ -4,8 +4,6 @@ class Users(models.Model):
 	idUser = models.AutoField(primary_key=True,editable=False)
 	mailUser = models.CharField(max_length=45)
 	passwordUser = models.CharField(max_length=20)
-	createdAt = models.DateTimeField(null=True)
-	updatedAt = models.DateTimeField(null=True)
 	active = models.BooleanField(default=False)
 	status = models.BooleanField(default=False)
 	token_push = models.CharField(max_length=100)
@@ -18,13 +16,13 @@ class UserProfile(models.Model):
 	nameUserProfile = models.CharField(max_length=20)
 	genderUserProfile = models.SmallIntegerField()
 	ageUserProfile = models.CharField(max_length=2)
-	statusUserProfile = models.CharField(max_length=7)
+	statusUserProfile = models.CharField(max_length=7, null=True)
 
 class Pictures(models.Model):
 	idUserProfile = models.AutoField(primary_key=True,editable=False)
-	picture01 = models.CharField(max_length=200)
-	picture02 = models.CharField(max_length=200)
-	picture03 = models.CharField(max_length=200)
+	picture01 = models.CharField(max_length=200,null=True)
+	picture02 = models.CharField(max_length=200,null=True)
+	picture03 = models.CharField(max_length=200,null=True)
 
 class City(models.Model):
 	idUser = models.AutoField(primary_key=True,editable=False)

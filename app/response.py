@@ -12,7 +12,7 @@ class LoginResponse:
 	def getUserDict(self):
 		return dict((('id',self.getUser().getId()),
 ('name',self.getUser().getName()),('email',self.getUser().getEmail()),('age',self.getUser().getAge()),('gender',self.getUser().getGender())
-,('city',self.getCityDict()),('createdAt',self.getUser().getCreatedAt()),('updatedAt',self.getUser().getUpdatedAt()),('photos',self.getPhotosDict())))
+,('city',self.getCityDict()),('photos',self.getPhotosDict())))
 
 	def getCityDict(self):
 		return dict((('default',self.getUser().getCity().getDefault()),('current',self.getUser().getCity().getCurrent())))
@@ -39,11 +39,9 @@ class User:
 	__age = 0
 	__gender = None
 	__city = None
-	__createdAt = None
-	__updatedAt = None
 	__photos = None
 
-	def __init__(self, id, name, email, age, gender, city, createdAt, updatedAt, photos):
+	def __init__(self, id, name, email, age, gender, city, photos):
 		self.__id = id
 		self.__name = name
 		self.__email = email
