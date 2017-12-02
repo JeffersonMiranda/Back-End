@@ -4,6 +4,8 @@ class Users(models.Model):
 	idUser = models.AutoField(primary_key=True,editable=False)
 	mailUser = models.CharField(max_length=45)
 	passwordUser = models.CharField(max_length=20)
+	createdAt = models.DateField(null=True)
+	updatedAt = models.DateField(null=True)
 	active = models.BooleanField(default=False)
 	status = models.BooleanField(default=False)
 	token_push = models.CharField(max_length=100)
