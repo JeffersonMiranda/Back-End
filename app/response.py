@@ -48,8 +48,6 @@ class User:
 		self.__age = age
 		self.__gender = gender
 		self.__city = city
-		self.__createdAt = createdAt
-		self.__updatedAt = updatedAt
 		self.__photos = photos
 
 	def getId(self):
@@ -66,12 +64,6 @@ class User:
 
 	def getCity(self):
 		return self.__city
-
-	def getCreatedAt(self):
-		return self.__createdAt
-
-	def getUpdatedAt(self):
-		return self.__updatedAt
 
 	def getPhotos(self):
 		return self.__photos

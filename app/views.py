@@ -20,7 +20,7 @@ def login(request):
 					userProfile = UserProfile.objects.filter(idUser=users[i].UserProfile_userId)
 					pictures = Pictures.objects.filter(idUserProfile=users[i].Pictures_idUserProfile)
 					city = City.objects.filter(idUser=users[i].City_idUser)
-					user = User(users[i].idUser, userProfile.nameUserProfile, users[i].mailUser, userProfile.ageUserProfile, userProfile.genderUserProfile, City(city.default,city.current), users[i].createdAt, users[i].updatedAt, Photos(pictures.picture01,pictures.picture02,pictures.picture03))
+					user = User(users[i].idUser, userProfile.nameUserProfile, users[i].mailUser, userProfile.ageUserProfile, userProfile.genderUserProfile, City(city.default,city.current), Photos(pictures.picture01,pictures.picture02,pictures.picture03))
 					loginResponse = LoginResponse(token_push, user)
 					return JsonResponse(loginResponse.getDict())
 		++i
