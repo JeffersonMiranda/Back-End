@@ -41,10 +41,14 @@ def sign(request):
 	photo2 = request.POST.get('photo2')
 	photo3 = request.POST.get('photo3')
 	i = 0
+
 	userProfileObj = UserProfile(nameUserProfile=name,genderUserProfile=gender,ageUserProfile=age)
+	userProfileObj.save()
+	userProfileObj = UserProfile.objects.get(nameUserProfile=name,genderUserProfile=gender,ageUserProfile=age)
+
 	cityObj = City(default=defaultCity,current=currentCity)
 	picturesObj = Pictures(picture01=photo1,picture02=photo2,picture03=photo3)
-	userObj = Users(mailUser=email,passwordUser=password,token_push=token_push,UserProfile_idUser=userProfileObj.idUser,City_idUser=cityObj.idUser,Pictures_idUserProfile=picturesObj.idUserProfile)
+	userObj = Users(mailUser=email,passwordUser=password,token_push=token_push,UserProfile_idUser=userProfileObj,Pictures_idUserProfile=picturesObj.idUserProfile,City_idUser=cityObj.idUser)
 	userObj.save()
 	user = User(userObj.idUser, userObj.nameUser, userObj.mailUser, userProfileObj.ageUserProfile, userProfileObj.genderUserProfile, CityResponse(cityObj.default, cityObj.current), Photos(photo1,photo2,photo3))
 	loginResponse = LoginResponse(token_push, user)
